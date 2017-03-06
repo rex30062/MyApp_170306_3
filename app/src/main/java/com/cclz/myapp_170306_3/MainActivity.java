@@ -4,13 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 implements View.OnClickListener{
-    Spinner spr;
+    Spinner spr, spr2;
+    String[] strs={"AA", "BBB", "CCCC", "DD", "EEEEE"};
     Button btn1,btn2;
     TextView tv1,tv2,tv3;
     @Override
@@ -24,6 +26,7 @@ implements View.OnClickListener{
         tv2=(TextView)findViewById(R.id.textView3);
         tv3=(TextView)findViewById(R.id.textView4);
         spr=(Spinner) findViewById(R.id.spinner);
+        spr2=(Spinner) findViewById(R.id.spinner2);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
 
@@ -40,6 +43,8 @@ implements View.OnClickListener{
             }
         });
 
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,strs);
+        spr2.setAdapter(adapter);
     }
 
     @Override
