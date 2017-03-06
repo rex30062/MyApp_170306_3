@@ -11,18 +11,21 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
 implements View.OnClickListener{
     Spinner spr;
-    Button btn;
-    TextView tv1,tv2;
+    Button btn1,btn2;
+    TextView tv1,tv2,tv3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn=(Button) findViewById(R.id.button);
+        btn1=(Button) findViewById(R.id.button);
+        btn2=(Button) findViewById(R.id.button2);
         tv1=(TextView)findViewById(R.id.textView2);
         tv2=(TextView)findViewById(R.id.textView3);
+        tv3=(TextView)findViewById(R.id.textView4);
         spr=(Spinner) findViewById(R.id.spinner);
-        btn.setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
 
         spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -42,15 +45,15 @@ implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-//            case R.id.button:
-//                tv2.setText(tv1.getText());
-//                break;
-//        }
             case R.id.button:
+                tv2.setText(tv1.getText());
+                break;
+
+            case R.id.button2:
             int poi=spr.getSelectedItemPosition();
                 String[] f=getResources().getStringArray(R.array.fruits);
-                tv2.setText(f[poi]);
-            break;
+                tv3.setText(f[poi]);
+                break;
         }
     }
 }
