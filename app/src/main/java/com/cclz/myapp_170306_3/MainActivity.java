@@ -28,8 +28,8 @@ implements View.OnClickListener{
         spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView spitv=(TextView) view;
-                tv1.setText(spitv.getText());
+                String[] f=getResources().getStringArray(R.array.fruits);
+                tv1.setText(f[position]);
             }
 
             @Override
@@ -44,7 +44,7 @@ implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button:
-
+                tv2.setText(tv1.getText());
                 break;
         }
     }
