@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My App_170306_3</string>
+    <string-array name="fruits">
+        <item>蘋果</item>
+        <item>橘子</item>
+        <item>檸檬</item>
+        <item>香蕉</item>
+    </string-array>
+</resources>
