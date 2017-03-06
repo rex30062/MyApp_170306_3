@@ -2,7 +2,6 @@ package com.cclz.myapp_170306_3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -43,9 +42,15 @@ implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+//            case R.id.button:
+//                tv2.setText(tv1.getText());
+//                break;
+//        }
             case R.id.button:
-                tv2.setText(tv1.getText());
-                break;
+            int poi=spr.getSelectedItemPosition();
+                String[] f=getResources().getStringArray(R.array.fruits);
+                tv2.setText(f[poi]);
+            break;
         }
     }
 }
