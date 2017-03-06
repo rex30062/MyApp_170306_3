@@ -6,15 +6,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity
 implements View.OnClickListener{
     Spinner spr, spr2;
-    String[] strs={"AA", "BBB", "CCCC", "DD", "EEEEE"};
-    Button btn1,btn2;
+    ArrayList<String> data;
+    Button btn1, btn2, btn3;
     TextView tv1,tv2,tv3;
+    EditText ed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,7 @@ implements View.OnClickListener{
 
         btn1=(Button) findViewById(R.id.button);
         btn2=(Button) findViewById(R.id.button2);
+        btn3=(Button) findViewById(R.id.button3);
         tv1=(TextView)findViewById(R.id.textView2);
         tv2=(TextView)findViewById(R.id.textView3);
         tv3=(TextView)findViewById(R.id.textView4);
@@ -29,6 +35,12 @@ implements View.OnClickListener{
         spr2=(Spinner) findViewById(R.id.spinner2);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        ed=(EditText)findViewById(R.id.editText);
+        data = new ArrayList<>();
+        data.add("AAA");
+        data.add("BB");
+        data.add("CCCC");
 
         spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -43,7 +55,8 @@ implements View.OnClickListener{
             }
         });
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,strs);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,data);
+        // android.R 為 android 內建
         spr2.setAdapter(adapter);
     }
 
@@ -55,9 +68,12 @@ implements View.OnClickListener{
                 break;
 
             case R.id.button2:
-            int poi=spr.getSelectedItemPosition();
+                int poi=spr.getSelectedItemPosition();
                 String[] f=getResources().getStringArray(R.array.fruits);
                 tv3.setText(f[poi]);
+                break;
+            case R.id.button3:
+                data.add(ed.getText().toString());
                 break;
         }
     }
